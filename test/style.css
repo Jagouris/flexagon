@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "National Park", Tahoma, sans-serif;
+}
+
+body {
+	font-size: 15;
+}
+
+img {
+	vertical-align: middle;
+}
+
+fieldset {
+	border: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+input {
+    accent-color: #000;
+}
+
+.property-box {
+	position: fixed;
+	background: #fff;
+	padding: 5px;
+	border: 1px solid #000;
+	user-select: none;
+}
+
+#grip {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background: url("grip.svg");
+	right: 5;
+	top: 5;
+}
+
+.property-text {
+	text-align: left;
+	padding: 3px;
+}
+
+.property-number {
+	width: 100%;
+}
+
+.title {
+	font-size: 17;
+	margin-top: 4px;
+	margin-bottom: 8px;
+	
+}
+
+td {
+	width: 50%;
+	border: none;
+}
+
+.property-button {
+	border: 1px solid;
+	width: 100%;
+	font-size: 15;
+	height: 27px;
+}
+
+.property-button:hover {
+	background: #ddd;
+}
+
+hr {
+	border: 1px solid #000;
+	margin: 4px;
+}
+
+#alternate-row {
+	background: #eee;
+}
