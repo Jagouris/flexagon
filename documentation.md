@@ -147,7 +147,13 @@ Generally, `dragBinder()` should be used in an `onmousedown` event, like the fol
 >
 > __binderID:__ string or number (optional)
 
-Open a specified  __pageID__ within a binder. __pageID__ may be a number or a string, and it can refer to either the name defined in the `id=""` attribute, or the page's index number. The page's index number is determined by the order in which the page was loaded, and indexes starts at 0.
+Open a specified  __pageID__ within a binder. __pageID__ works similar to __binderID__:
+
+```javascript
+openPage(0); //The index of the page is 0, because it is the first one in the binder
+openPage('0'); //You can also use a string to call an index number
+openPage('example'); //And you can refer to it with the given ID
+```
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 
