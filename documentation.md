@@ -1,7 +1,9 @@
 # pageQuery Documentation
 This is the documentation for the pageQuery library in Javascript.
 # HTML
-- ## `<binder />`
+
+<details>
+<summary><h2>&lt;binder /&gt</h2></summary>
 pageQuery works by using a bespoke element called the binder element:
 ```HTML
 <binder>...content...</binder>
@@ -33,7 +35,11 @@ Specify __class__ the same as normal HTML elements to refer to the binder or to 
 
 Specify __style__ the same as normal HTML elements to style it with CSS.
 
-- ## `<page />`
+</details>
+
+<details>
+<summary><h2>&lt;page /&gt</h2></summary>
+  
 Every binder contains at least one page element:
 ```HTML
 <page>...content...</page>
@@ -45,35 +51,46 @@ __`id=""`__
 
 - Specify a unique __id__ for a page, to make it easier to refer to that page (for instance, when using the `openPage()` function).
 
+</details>
+
 # Javascript
 
-- ## `translateBinder(x, y, binderID)`
-> __x:__ string or number
+<details>
+<summary><h2>translateBinder(x, y, binderID);</h2></summary>
+
+> __x:__ string or number (optional)
 > 
-> __y:__ string or number
+> __y:__ string or number (optional)
 > 
-> __binderID:__ string
+> __binderID:__ string (optional)
 
 Reposition a binder on the screen according to specified __X__ and __Y__ coordinates. You may format those coordinates as a string - a __%__ sign repositions a binder relative to the page.
 
 If an __X__ or __Y__ coordinate isn't specified, then the relative __X__ and __Y__ coordinate will remain the same.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
 
-- ## `resizeBinder(width, height, binderID)`
-> __width:__ string or number
+<details>
+<summary><h2>resizeBinder(width, height, binderID);</h2></summary>
+
+> __width:__ string or number (optional)
 > 
-> __height:__ string or number
+> __height:__ string or number (optional)
 > 
-> __binderID:__ string
+> __binderID:__ string (optional)
 
 Resize a binder according to specified __width__ and __height__ coordinates. You may format those coordinates as a string - a __%__ sign resizes a binder relative to the page.
 
 If a __width__ or __height__ coordinate isn't specified, then the relative __width__ and __height__ coordinate will remain the same.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
 
-- ## `dragBinder(binderID)`
+<details>
+<summary><h2>dragBinder(binderID);</h2></summary>
+
+> __binderID:__ string (optional)
 
 Drag a binder around the screen based on the cursor position.
 
@@ -85,7 +102,14 @@ Generally, `dragBinder()` should be used in an `onmousedown` event, like the fol
 <img src="icon.png" onmousedown="dragBinder()">
 ```
 
-- ## `openPage(pageID, binderID)`
+</details>
+
+<details>
+<summary><h2>openPage(pageID, binderID);</h2></summary>
+
+> __pageID:__ string or number
+>
+> __binderID:__ string (optional)
 
 Open a specified  __pageID__ within a binder. __pageID__ may be a number or a string, and it can refer to either the name defined in the `id=""` attribute, or the page's index number. The page's index number is determined by the order in which the page was loaded, and indexes starts at 0.
 
@@ -96,18 +120,92 @@ Example usage which opens the "cat" page in the "animals" binder:
 <a onclick="openPage('cat', 'animals')"></a>
 ```
 
-- ## `prevPage(binderID)`
+</details>
+
+<details>
+<summary><h2>prevPage(binderID);</h2></summary>
+
+> __binderID:__ string (optional)
 
 Opens the page at the previous index within a binder. The function will stop working at index 0, since there are no earlier pages.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
 
-- ## `nextPage(binderID)`
+<details>
+<summary><h2>nextPage(binderID);</h2></summary>
+
+> __binderID:__ string (optional)
 
 Opens the page at the next index within a binder. The function will stop working at the final index, since there are no later pages.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
 
-- ## `getCurrentPage(binderID)`
+<details>
+<summary><h2>getCurrentPage(binderID);</h2></summary>
 
-Returns the current page index which is displayed in the binder.
+> __binderID:__ string (optional)
+
+Returns the current index of the page which is displayed in the binder.
+</details>
+
+<details>
+<summary><h2>openBinder(binderID);</h2></summary>
+
+> __binderID:__ string
+
+Opens the specified binder.
+</details>
+
+<details>
+<summary><h2>closeBinder(binderID);</h2></summary>
+
+> __binderID:__ string (optional)
+
+Closes the specified binder.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
+
+<details>
+<summary><h2>bringToFront(binderID);</h2></summary>
+
+> __binderID:__ string (optional)
+
+Display the binder above all other binders.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
+
+<details>
+<summary><h2>getBinder(binderID);</h2></summary>
+
+> __binderID:__ string
+
+Returns the specified binder's object instance in Javascript.
+
+
+If you want to manipulate the binder directly, then you can store the binder object as a variable:
+```javascript
+let myBinder = getBinder("random-binder");
+```
+
+</details>
+
+<details>
+<summary><h2>findParentBinder(srcElement);</h2></summary>
+
+> __srcElement:__ Object 
+
+Returns the parent binder's __binderID__ of any HTML element which is enclosed in a binder.
+</details>
+
+<details>
+<summary><h2>defineBinder(srcElement, binderID);</h2></summary>
+
+Lets you define a new binder based on an HTML element.
+
+This doesn't work yet.
+
+</details>
