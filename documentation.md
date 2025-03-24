@@ -56,14 +56,30 @@ Specify a unique __id__ for a page, to make it easier to refer to that page (for
 
 # Javascript
 
-> [!TIP]
-> ```javascript
->//<binder id="example"></binder>
->//pageQuery is flexible. If that binder is the first in the document, then its index is 0, and it can be referred to in the following ways:
-> getBinder(0);
-> getBinder('0');
-> getBinder('example');
-> ```
+If you have a binder:
+```html
+<binder id="example"></binder>
+```
+Then you can refer to it in the following three ways:
+```javascript
+getBinder(0); //The index of the binder is 0, because it is the first one in the document
+getBinder('0'); //You can also use a string to call an index number
+getBinder('example'); //And you can refer to it with the given ID
+```
+Furthermore, if a function is anywhere inside a binder, like the following:
+```html
+<binder>
+   <page>
+      <button onclick="openPage('example')">Open Example Page</button>
+   </page>
+</binder>
+```
+Then you don't need to refer to that binder, since pageQuery will automatically look for the closest parent binder.
+
+It is also worth knowing that you can have more than one function inside an HTML element, like this:
+```html
+<button onclick="bringToFront(); openPage('example')"></button>
+```
 
 <details>
 <summary><h2>translateBinder(x, y, binderID);</h2></summary>
