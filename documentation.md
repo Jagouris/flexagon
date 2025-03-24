@@ -81,7 +81,7 @@ It is also worth knowing that you can have more than one function inside an HTML
 <button onclick="bringToFront(); openPage('example')"></button>
 ```
 
-Finally, if you create your own script alongside pageQuery, you need to include `pageQuery()` into a `window.onload` event, otherwise the elements won't be initialised properly:
+Finally, if you create your own script alongside pageQuery, you need to include `pageQuery()` into a `window.onload` event, otherwise the binder elements won't be initialised properly:
 ```javascript
 window.onload = function(){
    pageQuery();
