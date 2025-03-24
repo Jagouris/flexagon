@@ -1,10 +1,11 @@
 # pageQuery Documentation
-This is the documentation for the pageQuery library in Javascript.
+This is the documentation for the pageQuery library in Javascript. Every current function and HTML tag provided by pageQuery is listed here.
 # HTML
 
 <details>
 <summary><h2>&lt;binder /&gt</h2></summary>
 pageQuery works by using a bespoke element called the binder element:
+  
 ```HTML
 <binder>...content...</binder>
 ```
@@ -47,9 +48,9 @@ Every binder contains at least one page element:
 Binders may contain as many pages as you wish, though only one page can be displayed at a time. Pages can contain any HTML code that you choose, and you can open a different page by using the functions `openPage()`, `prevPage()`, and `nextPage`.
 
 ### Attributes:
-__`id=""`__
+- __`id=""`__
 
-- Specify a unique __id__ for a page, to make it easier to refer to that page (for instance, when using the `openPage()` function).
+Specify a unique __id__ for a page, to make it easier to refer to that page (for instance, when using the `openPage()` function).
 
 </details>
 
@@ -96,6 +97,8 @@ Drag a binder around the screen based on the cursor position.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 
+<hr />
+
 Generally, `dragBinder()` should be used in an `onmousedown` event, like the following example which uses an `<img />` element:
 
 ```HTML
@@ -114,6 +117,8 @@ Generally, `dragBinder()` should be used in an `onmousedown` event, like the fol
 Open a specified  __pageID__ within a binder. __pageID__ may be a number or a string, and it can refer to either the name defined in the `id=""` attribute, or the page's index number. The page's index number is determined by the order in which the page was loaded, and indexes starts at 0.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+
+<hr />
 
 Example usage which opens the "cat" page in the "animals" binder:
 ```HTML
@@ -147,7 +152,10 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 
 > __binderID:__ string (optional)
 
-Returns the current index of the page which is displayed in the binder.
+Returns the index of the page which is currently displayed in the binder.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+
 </details>
 
 <details>
@@ -185,6 +193,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 
 Returns the specified binder's object instance in Javascript.
 
+<hr />
 
 If you want to manipulate the binder directly, then you can store the binder object as a variable:
 ```javascript
@@ -205,6 +214,8 @@ Returns the parent binder's __binderID__ of any HTML element which is enclosed i
 <summary><h2>defineBinder(srcElement, binderID);</h2></summary>
 
 Lets you define a new binder based on an HTML element.
+
+<hr />
 
 This doesn't work yet.
 
