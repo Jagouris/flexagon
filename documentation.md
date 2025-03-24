@@ -14,7 +14,7 @@ All binder elements must contain at least one `<page />` element.
 ### Attributes:
 - __`id=""`__
 
-Specify a unique __id__ to refer to the binder. Specifying an __id__ makes it easier to manipulate from outside of the binder object.
+Specify a unique __id__ to refer to the binder. Specifying an __id__ makes it easier to manipulate from outside of the binder object (otherwise you can use the binder's index).
 
 - __`x=""`__ and __`y=""`__
 
@@ -56,6 +56,15 @@ Specify a unique __id__ for a page, to make it easier to refer to that page (for
 
 # Javascript
 
+> [!TIP]
+> ```javascript
+>//<binder id="example"></binder>
+>//pageQuery is flexible. If that binder is the first in the document, then its index is 0, and it can be referred to in the following ways:
+> getBinder(0);
+> getBinder('0');
+> getBinder('example');
+> ```
+
 <details>
 <summary><h2>translateBinder(x, y, binderID);</h2></summary>
 
@@ -63,7 +72,7 @@ Specify a unique __id__ for a page, to make it easier to refer to that page (for
 > 
 > __y:__ string or number (optional)
 > 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Reposition a binder on the screen according to specified __X__ and __Y__ coordinates. You may format those coordinates as a string - a __%__ sign repositions a binder relative to the page.
 
@@ -79,7 +88,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 > 
 > __height:__ string or number (optional)
 > 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Resize a binder according to specified __width__ and __height__ coordinates. You may format those coordinates as a string - a __%__ sign resizes a binder relative to the page.
 
@@ -91,7 +100,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>dragBinder(binderID);</h2></summary>
 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Drag a binder around the screen based on the cursor position.
 
@@ -112,7 +121,7 @@ Generally, `dragBinder()` should be used in an `onmousedown` event, like the fol
 
 > __pageID:__ string or number
 >
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Open a specified  __pageID__ within a binder. __pageID__ may be a number or a string, and it can refer to either the name defined in the `id=""` attribute, or the page's index number. The page's index number is determined by the order in which the page was loaded, and indexes starts at 0.
 
@@ -130,7 +139,7 @@ Example usage which opens the "cat" page in the "animals" binder:
 <details>
 <summary><h2>prevPage(binderID);</h2></summary>
 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Opens the page at the previous index within a binder. The function will stop working at index 0, since there are no earlier pages.
 
@@ -140,7 +149,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>nextPage(binderID);</h2></summary>
 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Opens the page at the next index within a binder. The function will stop working at the final index, since there are no later pages.
 
@@ -150,7 +159,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>getCurrentPage(binderID);</h2></summary>
 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Returns the index of the page which is currently displayed in the binder.
 
@@ -161,7 +170,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>openBinder(binderID);</h2></summary>
 
-> __binderID:__ string
+> __binderID:__ string or number 
 
 Opens the specified binder.
 </details>
@@ -169,7 +178,7 @@ Opens the specified binder.
 <details>
 <summary><h2>closeBinder(binderID);</h2></summary>
 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Closes the specified binder.
 
@@ -179,7 +188,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>bringToFront(binderID);</h2></summary>
 
-> __binderID:__ string (optional)
+> __binderID:__ string or number (optional)
 
 Display the binder above all other binders.
 
@@ -189,7 +198,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>getBinder(binderID);</h2></summary>
 
-> __binderID:__ string
+> __binderID:__ string or number 
 
 Returns the specified binder's object instance in Javascript.
 
