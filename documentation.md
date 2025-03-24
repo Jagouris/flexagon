@@ -11,27 +11,27 @@ All binder elements must contain at least one `<page />` element.
 ### Attributes:
 - __`id=""`__
 
-> Specify a unique __id__ to refer to the binder. Specifying an __id__ makes it easier to manipulate from outside of the binder object.
+Specify a unique __id__ to refer to the binder. Specifying an __id__ makes it easier to manipulate from outside of the binder object.
 
 - __`x=""`__ and __`y=""`__
 
-> Specify __X__ and __Y__ attributes to define the binder's position at startup. A __%__ sign positions it relative to the page.
+Specify __X__ and __Y__ attributes to define the binder's position at startup. A __%__ sign positions it relative to the page.
 
 - __`width=""`__ and __`height=""`__
 
-> Specify __width__ and __height__ attributes to define the binder's dimensions at startup. A __%__ sign resizes it relative to the page.
+Specify __width__ and __height__ attributes to define the binder's dimensions at startup. A __%__ sign resizes it relative to the page.
 
 - __`visible=""`__
 
-> Specify __visible__ as true or false to define whether the binder is visible at startup or not.
+Specify __visible__ as true or false to define whether the binder is visible at startup or not.
 
 - __`class=""`__
 
-> Specify __class__ the same as normal HTML elements to refer to the binder or to style it with CSS.
+Specify __class__ the same as normal HTML elements to refer to the binder or to style it with CSS.
 
 - __`style=""`__
 
-> Specify __style__ the same as normal HTML elements to style it with CSS.
+Specify __style__ the same as normal HTML elements to style it with CSS.
 
 - ## `<page />`
 Every binder contains at least one page element:
@@ -48,6 +48,11 @@ __`id=""`__
 # Javascript
 
 - ## `translateBinder(x, y, binderID)`
+> __x:__ string or number
+> 
+> __y:__ string or number
+> 
+> __binderID:__ string
 
 Reposition a binder on the screen according to specified __X__ and __Y__ coordinates. You may format those coordinates as a string - a __%__ sign repositions a binder relative to the page.
 
@@ -56,6 +61,11 @@ If an __X__ or __Y__ coordinate isn't specified, then the relative __X__ and __Y
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 
 - ## `resizeBinder(width, height, binderID)`
+> __width:__ string or number
+> 
+> __height:__ string or number
+> 
+> __binderID:__ string
 
 Resize a binder according to specified __width__ and __height__ coordinates. You may format those coordinates as a string - a __%__ sign resizes a binder relative to the page.
 
@@ -77,11 +87,27 @@ Generally, `dragBinder()` should be used in an `onmousedown` event, like the fol
 
 - ## `openPage(pageID, binderID)`
 
-Open a __pageID__ within in a binder. __pageID__ may be a number or a string, and it can refer to either the name defined in the `id=""` attribute, or the page's index number. The page's index number is determined by the order in which the page was loaded, and indexes starts at 0.
+Open a specified  __pageID__ within a binder. __pageID__ may be a number or a string, and it can refer to either the name defined in the `id=""` attribute, or the page's index number. The page's index number is determined by the order in which the page was loaded, and indexes starts at 0.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 
 Example usage which opens the "cat" page in the "animals" binder:
 ```HTML
-<a onclick="openPage("cat", "animals")"></a>
+<a onclick="openPage('cat', 'animals')"></a>
 ```
+
+- ## `prevPage(binderID)`
+
+Opens the page at the previous index within a binder. The function will stop working at index 0, since there are no earlier pages.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+
+- ## `nextPage(binderID)`
+
+Opens the page at the next index within a binder. The function will stop working at the final index, since there are no later pages.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+
+- ## `getCurrentPage(binderID)`
+
+Returns the current page index which is displayed in the binder.
