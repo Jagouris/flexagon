@@ -3,7 +3,7 @@ pageQuery is a lightweight Javascript library aimed to help create dynamic conta
 
 ### [➜ Webpage created with pageQuery](https://jagorak.github.io/pagequery)
 ### [➜ Video example of pageQuery](https://www.youtube.com/watch?v=WKCQJrdRDPM)
-### ➜ Documentation coming soon
+### [➜ Documentation](https://github.com/Jagorak/pageQuery/blob/644b5ff1273fd728ea1315bd0e3f3e4ab37a155c/documentation.md)
 
 ## Getting Started
 Import `pagequery.js` with the following tag:
