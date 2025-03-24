@@ -1,9 +1,9 @@
 # pageQuery
 pageQuery is a lightweight Javascript library aimed to help create dynamic containers with specialised HTML tags `<binder />` and `<page />`. When you import `pagequery.js` into your webpage, those elements will be loaded automatically as dynamic page containers, and you can manipulate them easily with pageQuery functions.
 
-### [➜ Webpage created with pageQuery](https://www.youtube.com/watch?v=WKCQJrdRDPM)
+### [➜ Webpage created with pageQuery](https://jagurak.github.io/pageQuery-site/)
 ### [➜ Video example of pageQuery](https://www.youtube.com/watch?v=WKCQJrdRDPM)
-
+### ➜ Documentation coming soon
 
 ## Getting Started
 Import `pagequery.js` with the following tag:
