@@ -101,6 +101,8 @@
 				this.srcElement.getAttribute("y")
 			);
 			
+			this.srcElement.style.left = 500;
+			
 			if(this.srcElement.getAttribute("visible") == "false") this.hide();
 			
 			return true;
@@ -154,6 +156,8 @@
 		};
 
 		this.translate = function(x, y){
+			let currentStyle = window.getComputedStyle(this.srcElement);
+			
 			if(x || x == 0){
 				if(typeof x !== "number"){
 					if(x.includes("%")){
@@ -163,7 +167,7 @@
 					}
 				}
 
-				this.srcElement.style.left = x;
+				this.srcElement.style.left = x.toString() + "px";
 			}
 			
 			if(y || y == 0){
@@ -175,7 +179,7 @@
 					}
 				}
 
-				this.srcElement.style.top = y;
+				this.srcElement.style.top = y.toString() + "px";
 			}
 		};
 		
@@ -189,7 +193,7 @@
 					}
 				}
 
-				this.srcElement.style.width = width;
+				this.srcElement.style.width = width.toString() + "px";
 			}
 			
 			if(height || height == 0){
@@ -201,7 +205,7 @@
 					}
 				}
 
-				this.srcElement.style.height = height;
+				this.srcElement.style.height = height.toString() + "px";
 			}
 		};
 
@@ -293,7 +297,7 @@
 				}else{
 					for(let binderID in binders){
 						if(binders[binderID].srcElement == parentNode){
-							return id;
+							return binderID;
 						}
 					}
 				}
@@ -340,7 +344,7 @@
 	window.dragBinder = function(binderID = null){
 		if(!binderID) binderID = findParentBinder(event.srcElement);
 		else binderID = getBinderIndex(binderID);
-
+		
 		binders[binderID].makeActive();
 		bringToFront(binderID);
 	};
