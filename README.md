@@ -11,10 +11,17 @@ pageQuery is a lightweight Javascript library aimed to help create dynamic conta
 ### [➜ Documentation](https://github.com/Jagorak/pageQuery/blob/main/documentation.md)
 
 ## Getting Started
+
+### 1. Download pageQuery
+Download pageQuery by using either `pagequery.js` file above (that is the most up-to-date version).
+
+### 2. Import pageQuery into your file
 Import `pagequery.js` with the following tag:
 ```HTML
 <script type="text/javascript" src="pagequery.js"></script>
 ```
+
+### 3. Create a basic page with pageQuery
 Put the following HTML within your `<body />` tag:
 ```HTML
 <binder x="50%" y="50%">
@@ -28,7 +35,7 @@ Put the following HTML within your `<body />` tag:
    </page>
 </binder>
 ```
-And finally, give a simple design to your binder with CSS:
+- Then, give a simple design to your binder with CSS:
 ```HTML
 <style>
    binder {
@@ -41,14 +48,15 @@ And finally, give a simple design to your binder with CSS:
 ```
 And then you should have a fully functioning binder, a dynamic page container which you can manipulate with Javascript.
 
-Finally, add some simple functionality to the binder. Anywhere within your `<binder />` tag, put the following code:
+### 4. Add some functionality to pageQuery
+- Finally, you can add some simple functionality to the binder. Anywhere within your `<binder />` tag, put the following code:
 ```HTML
 <button onmousedown="dragBinder()">Drag Binder</button>
 ```
 You can now click and hold this button to move the binder around the screen.
 
-### TODO List:
+## TODO List:
 A list of development tasks for pageQuery
 
-- [ ] __1.__ load `<span />` tags in place of binder and page tags to improve compatiblity (right now attributes are being applied directly to those
-- [ ] __2.__ make `defineBinder()` work
+- [ ] __1.__ Load `<span />` tags in place of binder and page tags to improve compatiblity. (Right now, attributes are being applied directly to those tags despite not existing in HTML specification)
+- [ ] __2.__ Make `defineBinder()` work. (This will allow the user to load new binders dynamically)
