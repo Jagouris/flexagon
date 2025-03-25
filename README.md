@@ -61,4 +61,5 @@ A list of development tasks for pageQuery
 - [ ] __1.__ Load `<span />` tags in place of binder and page tags to improve compatiblity. (Right now, attributes are being applied directly to those tags despite not existing in HTML specification)
 - [ ] __2.__ Make `defineBinder()` work. (This will allow the user to load new binders dynamically)
 - [ ] __3.__ Try passing object/dictionary as parameters to functions (i.e. `translateBinder({x: 0, y: 0})`)
-- [ ] __4.__ Create an npm package for pageQuery
+- [ ] __4.__ Create functions `getCurrentBinder()`, `getCurrentBinderName()`, `getCurrentPageName()`
+- [ ] __5.__ Create an npm package for pageQuery
