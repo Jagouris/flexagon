@@ -1,4 +1,4 @@
-// pageQuery v1.1.2
+// pageQuery v1.1.3
 // MIT License
 // Copyright (c) 2025 Jagorak (https://github.com/Jagorak)
 
@@ -88,20 +88,16 @@
 			this.showPage(this.currentPage);
 			
 			this.updateCurrentStyle();
-			
 			this.resize(
 				this.srcElement.getAttribute("width"),
 				this.srcElement.getAttribute("height")
 			);
 			
 			this.updateCurrentStyle();
-			
 			this.translate(
 				this.srcElement.getAttribute("x"),
 				this.srcElement.getAttribute("y")
 			);
-			
-			this.srcElement.style.left = 500;
 			
 			if(this.srcElement.getAttribute("visible") == "false") this.hide();
 			
@@ -161,25 +157,30 @@
 			if(x || x == 0){
 				if(typeof x !== "number"){
 					if(x.includes("%")){
+						
 						x = (window.innerWidth*parseInt(x)/100)-(this.shape.width*parseInt(x)/100);
-					}else{
-						x = parseInt(x);
+					}else if(x.includes("px")){
+						this.srcElement.style.left = x;
 					}
+					
+					this.srcElement.style.left = x + "px";
+				}else{
+					this.srcElement.style.left = x.toString() + "px";
 				}
-
-				this.srcElement.style.left = x.toString() + "px";
 			}
 			
 			if(y || y == 0){
 				if(typeof y !== "number"){
 					if(y.includes("%")){
 						y = (window.innerHeight*parseInt(y)/100)-(this.shape.height*parseInt(y)/100);
-					}else{
-						y = parseInt(y);
+					}else if(y.includes("px")){
+						this.srcElement.style.top = y;
 					}
+					
+					this.srcElement.style.top = y + "px";
+				}else{
+					this.srcElement.style.top = y.toString() + "px";
 				}
-
-				this.srcElement.style.top = y.toString() + "px";
 			}
 		};
 		
@@ -188,21 +189,25 @@
 				if(typeof width !== "number"){
 					if(width.includes("%")){
 						width = window.innerWidth*parseInt(width)/100;
-					}else{
-						width = parseInt(width);
+					}else if(width.includes("px")){
+						this.srcElement.style.width = width;
 					}
+					
+					this.srcElement.style.width = width + "px";
+				}else{
+					this.srcElement.style.width = width.toString() + "px";
 				}
-
-				this.srcElement.style.width = width.toString() + "px";
 			}
 			
 			if(height || height == 0){
 				if(typeof height !== "number"){
 					if(height.includes("%")){
 						height = window.innerWidth*parseInt(height)/100;
-					}else{
-						height = parseInt(height);
+					}else if(height.includes("px")){
+						this.srcElement.style.height = height;
 					}
+					
+					this.srcElement.style.height = height + "px";
 				}
 
 				this.srcElement.style.height = height.toString() + "px";
@@ -249,7 +254,6 @@
 		
 		zIndex.push(i);
 		
-		console.log(binders[i].srcElement);
 		binders[i].srcElement.style.zIndex = zIndex.length-1;
 	}
 	
@@ -349,7 +353,9 @@
 		bringToFront(binderID);
 	};
 
-	window.translateBinder = function(x, y, binderID = null){
+	//if argument is object {x:, y:}	 TODO
+	
+	window.translateBinder = function(x = null, y = null, binderID = null){
 		if(!binderID) binderID = findParentBinder(event.srcElement);
 		else binderID = getBinderIndex(binderID);
 
@@ -357,7 +363,7 @@
 		binders[binderID].translate(x, y);
 	};
 	
-	window.resizeBinder = function(width, height, binderID = null){
+	window.resizeBinder = function(width = null, height = null, binderID = null){
 		if(!binderID) binderID = findParentBinder(event.srcElement);
 		else binderID = getBinderIndex(binderID);
 
