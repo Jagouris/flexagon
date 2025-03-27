@@ -242,6 +242,17 @@ let myBinder = getBinder("random-binder");
 </details>
 
 <details>
+<summary><h2>getBinderIndex(binderID = null);</h2></summary>
+
+> __binderID:__ string or number 
+
+Returns the specified binder's index.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+
+</details>
+
+<details>
 <summary><h2>findParentBinder(srcElement);</h2></summary>
 
 > __srcElement:__ Object 
