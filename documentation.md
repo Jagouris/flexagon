@@ -96,7 +96,7 @@ window.onload = function(){
 > 
 > __y:__ string or number (optional)
 > 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Reposition a binder on the screen according to specified __X__ and __Y__ coordinates. You may format those coordinates as a string - a __%__ sign repositions a binder relative to the page.
 
@@ -112,7 +112,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 > 
 > __height:__ string or number (optional)
 > 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Resize a binder according to specified __width__ and __height__ coordinates. You may format those coordinates as a string - a __%__ sign resizes a binder relative to the page.
 
@@ -124,7 +124,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>dragBinder(binderID);</h2></summary>
 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Drag a binder around the screen based on the cursor position.
 
@@ -145,7 +145,7 @@ Generally, `dragBinder()` should be used in an `onmousedown` event, like the fol
 
 > __pageID:__ string or number
 >
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Open a specified  __pageID__ within a binder. __pageID__ works similar to __binderID__:
 
@@ -169,7 +169,7 @@ Example usage which opens the "cat" page in the "animals" binder:
 <details>
 <summary><h2>prevPage(binderID);</h2></summary>
 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Opens the page at the previous index within a binder. The function will stop working at index 0, since there are no earlier pages.
 
@@ -179,7 +179,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>nextPage(binderID);</h2></summary>
 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Opens the page at the next index within a binder. The function will stop working at the final index, since there are no later pages.
 
@@ -189,7 +189,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>getCurrentPage(binderID);</h2></summary>
 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Returns the index of the page which is currently displayed in the binder.
 
@@ -200,7 +200,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>openBinder(binderID);</h2></summary>
 
-> __binderID:__ string or number 
+> __binderID:__ string, number or Object
 
 Opens the specified binder.
 </details>
@@ -208,7 +208,7 @@ Opens the specified binder.
 <details>
 <summary><h2>closeBinder(binderID);</h2></summary>
 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Closes the specified binder.
 
@@ -218,7 +218,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>bringToFront(binderID);</h2></summary>
 
-> __binderID:__ string or number (optional)
+> __binderID:__ string, number or Object (optional)
 
 Display the binder above all other binders.
 
@@ -228,7 +228,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 <details>
 <summary><h2>getBinder(binderID);</h2></summary>
 
-> __binderID:__ string or number 
+> __binderID:__ string, number or Object
 
 Returns the specified binder's object instance in Javascript.
 
@@ -242,11 +242,11 @@ let myBinder = getBinder("random-binder");
 </details>
 
 <details>
-<summary><h2>getBinderIndex(binderID = null);</h2></summary>
+<summary><h2>getBinderIndex(binderID);</h2></summary>
 
-> __binderID:__ string or number 
+> __binderID:__ string, number or Object
 
-Returns the specified binder's index.
+Returns the specified binder's index. You can pass a 
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 
