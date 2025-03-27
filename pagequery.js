@@ -85,11 +85,10 @@
 
       zIndex.splice(i, 1);
 
-      for(i; i < zIndex.length; i++){
-         binderList[zIndex[i]].node.style.zIndex--;
-      }
-
+      for(i; i < zIndex.length; i++) binderList[zIndex[i]].node.style.zIndex--;
+      
       zIndex[i] = binderID;
+      
       binderList[binderID].node.style.zIndex = i;
    };
 
