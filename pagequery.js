@@ -194,10 +194,13 @@
 
          for(let page of pageNodes){
             page = convertToSpan(page);
-
             let pageIndex = this.pageList.push(page)-1;
-
-            if(page.id) this.pageNames[page.id] = pageIndex;
+            
+            let id = page.id;
+            
+            if(id) this.pageNames[page.id] = pageIndex;
+            else id = (this.pageList.length).toString();
+            page.id = "page:" + id;
 
             this.pageNames[pageIndex.toString()] = pageIndex;
 
