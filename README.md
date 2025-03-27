@@ -58,4 +58,4 @@ A list of development tasks for pageQuery
 - [ ] __3.__ Try passing object/dictionary as parameters to functions (i.e. `translateBinder({x: 0, y: 0})`)
 - [ ] __4.__ Create functions `getCurrentBinder()`, `getCurrentBinderName()`, `getCurrentPageName()`
 - [ ] __5.__ Create an npm package for pageQuery
-- [ ] __6.__ Experiment with (HTMLCustomElement)[https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements] to improve the efficiency of pageQuery
+- [ ] __6.__ Experiment with [HTMLCustomElement](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to improve the efficiency of pageQuery
