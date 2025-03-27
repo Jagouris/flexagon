@@ -1,8 +1,3 @@
->[!IMPORTANT]
->pageQuery is early in development so there will likely be some bugs.
->
-> [__➜ See TODO list__](#todo-list)
-
 # pageQuery
 pageQuery is a lightweight Javascript library aimed to help create dynamic containers with specialised HTML tags `<binder />` and `<page />`. When you import `pagequery.js` into your webpage, those elements will be loaded automatically as dynamic page containers, and you can manipulate them easily with pageQuery functions.
 
@@ -58,7 +53,7 @@ You can now click and hold this button to move the binder around the screen.
 ## TODO List:
 A list of development tasks for pageQuery
 
-- [ ] __1.__ Load `<span />` tags in place of binder and page tags to improve compatiblity. (Right now, attributes are being applied directly to those tags despite not existing in HTML specification)
+- [x] __1.__ Load `<span />` tags in place of binder and page tags to improve compatiblity.
 - [ ] __2.__ Make `defineBinder()` work. (This will allow the user to load new binders dynamically)
 - [ ] __3.__ Try passing object/dictionary as parameters to functions (i.e. `translateBinder({x: 0, y: 0})`)
 - [ ] __4.__ Create functions `getCurrentBinder()`, `getCurrentBinderName()`, `getCurrentPageName()`
