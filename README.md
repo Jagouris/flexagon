@@ -59,3 +59,4 @@ A list of development tasks for pageQuery
 - [ ] __4.__ Create functions `getCurrentBinder()`, `getCurrentBinderName()`, `getCurrentPageName()`
 - [ ] __5.__ Create an npm package for pageQuery
 - [ ] __6.__ Experiment with [HTMLCustomElement](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to improve the efficiency of pageQuery
+- [ ] __7.__ Try to transfer `onclick=""` events from binder tags to their respective span tags
