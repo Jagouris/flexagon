@@ -246,7 +246,7 @@ let myBinder = getBinder("random-binder");
 
 > __binderID:__ string, number or Object
 
-Returns the specified binder's index. You can pass a 
+Returns the specified binder's index.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 
