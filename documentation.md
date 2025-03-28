@@ -24,9 +24,9 @@ Specify __X__ and __Y__ attributes to define the binder's position at startup. A
 
 Specify __width__ and __height__ attributes to define the binder's dimensions at startup. A __%__ sign resizes it relative to the page.
 
-- __`visible=""`__
+- __`hidden`__
 
-Specify __visible__ as true or false to define whether the binder is visible at startup or not.
+Specify __hidden__ to hide the binder at startup.
 
 - __`class=""`__
 
