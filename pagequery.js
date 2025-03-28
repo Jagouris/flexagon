@@ -1,12 +1,13 @@
-//pageQuery v1.2.0 copyright (c) Jagorak (https://github.com/Jagorak/)
+//pageQuery v1.2.2 copyright (c) Jagorak (https://github.com/Jagorak/)
 
 (function(){
    let mousePos = {x: 0, y: 0};
    let prevMousePos = {x: 0, y: 0};
 
-   const ID_RE = /[:]/;
-   const PQ_RE = /[%]/;
-   const PX_RE = /[px]/;
+   const ID_RE = new RegExp("[ ]");
+   const PQ_RE = new RegExp("[%]");
+   const PX_RE = new RegExp("[px]");
+   const FN_RE = new RegExp("\(.*?\)");
 
    let binderList = [];
    let binderNames = [];
@@ -24,16 +25,7 @@
    function init(){
       let binderNodes = document.querySelectorAll("BINDER");
 
-      for(let binder of binderNodes){
-         let binderName = binder.id;
-         let i = binderList.push(new Binder(binder))-1;
-
-         if(binderName) binderNames[binderName] = i;
-         binderNames[i.toString()] = i;
-
-         zIndex.push(i);
-         binderList[i].node.style.zIndex = zIndex.length-1;
-      }
+      for(let binder of binderNodes) loadBinder(binder);
 
       document.addEventListener('mouseup', function(){
          if(activeBinder) activeBinder.makeInactive();
@@ -61,7 +53,7 @@
    }
 
    window.translateBinder = function(x = null, y = null, binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       binderList[binderID].readNewCSS();
@@ -70,7 +62,7 @@
    };
 
    window.resizeBinder = function(width = null, height = null, binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       binderList[binderID].readNewCSS();
@@ -78,7 +70,7 @@
    };
 
    window.bringToFront = function(binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       let i = zIndex.indexOf(binderID);
@@ -93,7 +85,7 @@
    };
 
    window.openBinder = function(binderID){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       bringToFront(binderID);
@@ -101,28 +93,28 @@
    };
 
    window.closeBinder = function(binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       binderList[binderID].hide();
    };
 
    window.getBinder = function(binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       if(binderList[binderID]) return binderList[binderID];
    };
 
    window.openPage = function(pageID, binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       binderList[binderID].openPage(pageID);
    };
 
    window.prevPage = function(binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       let currentPage = binderList[binderID].currentPage;
@@ -130,22 +122,22 @@
    };
 
    window.nextPage = function(binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       let currentPage = binderList[binderID].currentPage;
-      if (currentPage < binderList[binderID].pageList.length) binderList[binderID].openPage(currentPage+1);
+      if (currentPage < binderList[binderID].pageList.length-1) binderList[binderID].openPage(currentPage+1);
    };
 
    window.getCurrentPage = function(binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       return binderList[binderID].currentPage;
    };
 
    window.dragBinder = function(binderID = null){
-      if(!binderID) binderID = findParentBinder(event.srcElement);
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
       else binderID = getBinderIndex(binderID);
 
       binderList[binderID].makeActive();
@@ -159,21 +151,19 @@
    };
 
    window.findParentBinder = function(node){
-      let parentNode = node.parentNode;
-
-      while(parentNode){
-         if(parentNode.tagName == "SPAN"){
-            let id = parentNode.id.split(ID_RE);
+      while(node){
+         if(node.tagName == "SPAN"){
+            let id = node.id.split(ID_RE);
 
             if(id[0] == "binder"){
                return getBinderIndex(id[1]);
             }
          }
 
-         parentNode = parentNode.parentNode;
+         node = node.parentNode;
       }
    };
-   //https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment
+   
    function Binder(node){
       this.node = convertToSpan(node);
       this.pos = {x: 0, y: 0};
@@ -185,7 +175,7 @@
       this.init = function(){
          let id = this.node.id;
          if(!id) id = (binderList.length).toString();
-         this.node.id = "binder:" + id;
+         this.node.id = "binder " + id;
 
          this.node.style.display = "block";
 
@@ -199,7 +189,7 @@
             
             if(id) this.pageNames[page.id] = pageIndex;
             else id = (this.pageList.length).toString();
-            page.id = "page:" + id;
+            page.id = "page " + id;
 
             this.pageNames[pageIndex.toString()] = pageIndex;
 
@@ -312,7 +302,7 @@
          }else{
             if(PQ_RE.test(height)){
                height = window.innerHeight*parseInt(height)/100;
-
+               
                this.node.style.height = height.toString() + "px";
             }else if(PX_RE.test(height)) this.node.style.height = height;
          }
@@ -324,7 +314,13 @@
    function convertToSpan(oldNode){
       let newNode = document.createElement("SPAN");
 
-      for(let attribute of oldNode.attributes) newNode.attributes[attribute.name] = attribute.value;
+      for(let attribute of oldNode.attributes){
+         newNode.attributes[attribute.name] = attribute.value;
+         
+         //if(FN_RE.test(attribute.value)) newNode[attribute.name] = new Function(attribute.value);
+         
+         if(FN_RE.test(attribute.value)) newNode.setAttribute(attribute.name, attribute.value);
+      }
 
       for(let child of oldNode.children) newNode.appendChild(child.cloneNode(true));
 
@@ -343,5 +339,16 @@
       newStyle = window.getComputedStyle(newNode);
 
       for(let rule of oldStyle) if(oldStyle[rule] != newStyle[rule]) newNode.style[rule] = oldStyle[rule];
+   }
+   
+   function loadBinder(node){
+      let binderName = node.id;
+      let i = binderList.push(new Binder(node))-1;
+
+      if(binderName) binderNames[binderName] = i;
+      binderNames[i.toString()] = i;
+
+      zIndex.push(i);
+      binderList[i].node.style.zIndex = zIndex.length-1;
    }
 })();
