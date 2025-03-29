@@ -1,12 +1,13 @@
-//pageQuery v1.2.2 copyright (c) Jagorak (https://github.com/Jagorak/)
+//pageQuery v1.3.0 copyright (c) Jagorak (https://github.com/Jagorak/)
 
 (function(){
    let mousePos = {x: 0, y: 0};
    let prevMousePos = {x: 0, y: 0};
 
-   const ID_RE = new RegExp("[ ]");
-   const PQ_RE = new RegExp("[%]");
-   const PX_RE = new RegExp("[px]");
+   const ID_RE = new RegExp(" ");
+   const PG_RE = new RegExp("page ");
+   const PQ_RE = new RegExp("%");
+   const PX_RE = new RegExp("px");
    const FN_RE = new RegExp("\(.*?\)");
 
    let binderList = [];
@@ -164,8 +165,35 @@
       }
    };
    
+   window.cloneBinder = function(binderName = null, binderID = null){
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
+      else binderID = getBinderIndex(binderID);
+
+      let node = binderList[binderID].node.cloneNode(true);
+      
+      if(!binderNames[binderName]) node.id = binderName;
+      else node.id = "";
+      
+      document.querySelector("body").appendChild(node);
+      
+      return loadBinder(node);
+   };
+   
+   window.deleteBinder = function(binderID = null){
+      if(!binderID && binderID != 0) binderID = findParentBinder(event.srcElement);
+      else binderID = getBinderIndex(binderID);
+
+      binderList[binderID].node.remove();
+      binderList[binderID] = undefined;
+      let i = zIndex.indexOf(binderID);
+
+      zIndex.splice(i, 1);
+
+      for(i; i < zIndex.length; i++) binderList[zIndex[i]].node.style.zIndex--;
+   };
+   
    function Binder(node){
-      this.node = convertToSpan(node);
+      this.node = node;
       this.pos = {x: 0, y: 0};
       this.dim = {width: 0, height: 0};
       this.pageList = [];
@@ -178,22 +206,17 @@
          this.node.id = "binder " + id;
 
          this.node.style.display = "block";
-
-         let pageNodes = this.node.querySelectorAll("PAGE");
-
-         for(let page of pageNodes){
-            page = convertToSpan(page);
-            let pageIndex = this.pageList.push(page)-1;
+         
+         if(this.node.tagName == "BINDER"){
+            this.node = convertToSpan(this.node);
             
-            let id = page.id;
-            
-            if(id) this.pageNames[page.id] = pageIndex;
-            else id = (this.pageList.length).toString();
-            page.id = "page " + id;
+            let pageNodes = this.node.querySelectorAll("PAGE");
 
-            this.pageNames[pageIndex.toString()] = pageIndex;
+            for(let page of pageNodes) this.loadPage(convertToSpan(page));
+         }else if(this.node.tagName == "SPAN"){
+            let spanNodes = this.node.querySelectorAll("SPAN");
 
-            page.style.display = "none";
+            for(let node of spanNodes) if(PG_RE.test(node.id)) this.loadPage(node);
          }
 
          this.node.style.position = "fixed";
@@ -212,9 +235,21 @@
          this.translateX(this.node.attributes["x"]);
          this.translateY(this.node.attributes["y"]);
 
-         if(this.node.attributes["hidden"] !== undefined){
-            if(this.node.attributes["hidden"] != "false") this.node.style.display = "none";
-         }
+         if(this.node.attributes["hidden"] !== undefined) if(this.node.attributes["hidden"] != "false") this.node.style.display = "none";
+      };
+      
+      this.loadPage = function(node){
+         let pageIndex = this.pageList.push(node)-1;
+
+         let id = node.id;
+
+         if(id) this.pageNames[node.id] = pageIndex;
+         else id = (this.pageList.length).toString();
+         node.id = "page " + id;
+
+         this.pageNames[pageIndex.toString()] = pageIndex;
+
+         node.style.display = "none";
       };
 
       this.makeActive = function(){
@@ -317,8 +352,6 @@
       for(let attribute of oldNode.attributes){
          newNode.attributes[attribute.name] = attribute.value;
          
-         //if(FN_RE.test(attribute.value)) newNode[attribute.name] = new Function(attribute.value);
-         
          if(FN_RE.test(attribute.value)) newNode.setAttribute(attribute.name, attribute.value);
       }
 
@@ -350,5 +383,7 @@
 
       zIndex.push(i);
       binderList[i].node.style.zIndex = zIndex.length-1;
+      
+      return binderList[i];
    }
 })();
