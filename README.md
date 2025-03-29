@@ -1,7 +1,7 @@
 # Flexagon
 Flexagon is a lightweight Javascript library aimed to help create dynamic containers with custom HTML tags `<binder />` and `<page />`. When you import `flexagon.js` into your webpage, those elements will be loaded automatically as dynamic page containers, and you can manipulate them easily with Flexagon's functions.
 
-### [➜ Webpage created with Flexagon](https://jagorak.github.io/flexagon)
+### [➜ Webpage created with Flexagon](https://jagorak.github.io/Flexagon)
 ### [➜ Video example of Flexagon](https://www.youtube.com/watch?v=WKCQJrdRDPM)
 ### [➜ Documentation](https://github.com/Jagorak/flexagon/blob/main/documentation.md)
 
