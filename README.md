@@ -55,5 +55,5 @@ A list of development tasks for pageQuery
 
 - [x] __1.__ Load `<span />` tags in place of binder and page tags to improve compatiblity.
 - [ ] __2.__ Experiment with [HTMLCustomElement](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to improve the efficiency of pageQuery
-- [ ] __3.__ Create functions `newBinder()`, `duplicateBinder()`, `deleteBinder()`
+- [x] __3.__ Create functions `cloneBinder()`, `deleteBinder()`
 - [x] __4.__ Try to transfer event listeners (`onclick=""` etc.)from binder tags to their respective span tags
