@@ -156,9 +156,7 @@
          if(node.tagName == "SPAN"){
             let id = node.id.split(ID_RE);
 
-            if(id[0] == "binder"){
-               return getBinderIndex(id[1]);
-            }
+            if(id[0] == "binder") return getBinderIndex(id[1]);
          }
 
          node = node.parentNode;
