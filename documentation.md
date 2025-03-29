@@ -241,6 +241,17 @@ let myBinder = getBinder("random-binder");
 
 </details>
 
+<summary><h2>cloneBinder(binderName, binderID);</h2></summary>
+
+> __binderName:__ string (optional)
+> __binderID:__ string, number or Object (optional)
+
+Clones the specified binder and returns the object instance of the cloned binder.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
+
+
 <details>
 <summary><h2>getBinderIndex(binderID);</h2></summary>
 
@@ -257,7 +268,7 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 
 > __srcElement:__ Object 
 
-Returns the parent binder's __binderID__ of any HTML element which is enclosed in a binder.
+Returns the parent binder's index of any HTML element which is enclosed in a binder.
 </details>
 
 <details>
