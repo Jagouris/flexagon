@@ -253,6 +253,18 @@ Clones the specified binder, all of its pages, and returns the object instance o
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 </details>
 
+<details>
+<summary><h2>deleteBinder(binderID);</h2></summary>
+
+> __binderName:__ string (optional)
+> 
+> __binderID:__ string, number or Object (optional)
+
+Deletes the specified binder.
+
+If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
+</details>
+
 
 <details>
 <summary><h2>getBinderIndex(binderID);</h2></summary>
