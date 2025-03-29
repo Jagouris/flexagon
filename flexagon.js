@@ -1,4 +1,4 @@
-//pageQuery v1.3.0 copyright (c) Jagorak (https://github.com/Jagorak/)
+//Flexagon v1.3.0 copyright (c) Jagorak (https://github.com/Jagorak/)
 
 (function(){
    let mousePos = {x: 0, y: 0};
@@ -19,7 +19,7 @@
       init();
    };
 
-   window.pageQuery = function(){
+   window.flexagon = function(){
       init();
    };
 
