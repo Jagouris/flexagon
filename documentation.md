@@ -1,10 +1,10 @@
-# pageQuery Documentation
-This is the documentation for the pageQuery library in Javascript. Every current function and HTML tag provided by pageQuery is listed here.
+#  Documentation
+This is the documentation for the Flexagon library in Javascript. Every current function and HTML tag provided by Flexagon is listed here.
 # HTML
 
 <details>
 <summary><h2>&lt;binder /&gt</h2></summary>
-pageQuery works by using a bespoke element called the binder element:
+Flexagon works by using a bespoke element called the binder element:
   
 ```HTML
 <binder>...content...</binder>
@@ -81,17 +81,17 @@ Furthermore, if a function is anywhere inside a binder, like the following:
    </page>
 </binder>
 ```
-Then you don't need to refer to that binder, since pageQuery will automatically look for the closest parent binder.
+Then you don't need to refer to that binder, since Flexagon will automatically look for the closest parent binder.
 
 It is also worth knowing that you can have more than one function inside an HTML element, like this:
 ```html
 <button onclick="bringToFront(); openPage('example')"></button>
 ```
 
-Finally, if you create your own script alongside pageQuery, you need to include `pageQuery()` into a `window.onload` event, otherwise the binder elements won't be initialised properly:
+Finally, if you create your own script alongside Flexagon, you need to include `flexagon()` into a `window.onload` event, otherwise the binder elements won't be initialised properly:
 ```javascript
 window.onload = function(){
-   pageQuery();
+   flexagon();
    //your code....
 }
 ```
@@ -290,15 +290,4 @@ If __binderID__ isn't specified, then the function will be carried out on the pa
 > __srcElement:__ Object 
 
 Returns the parent binder's index of any HTML element which is enclosed in a binder.
-</details>
-
-<details>
-<summary><h2>defineBinder(srcElement, binderID);</h2></summary>
-
-Lets you define a new binder based on an HTML element.
-
-<hr />
-
-This doesn't work yet.
-
 </details>
