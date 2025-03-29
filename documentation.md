@@ -241,9 +241,11 @@ let myBinder = getBinder("random-binder");
 
 </details>
 
+<details>
 <summary><h2>cloneBinder(binderName, binderID);</h2></summary>
 
 > __binderName:__ string (optional)
+> 
 > __binderID:__ string, number or Object (optional)
 
 Clones the specified binder and returns the object instance of the cloned binder.
