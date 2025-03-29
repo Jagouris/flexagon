@@ -1,22 +1,22 @@
-# pageQuery
-pageQuery is a lightweight Javascript library aimed to help create dynamic containers with custom HTML tags `<binder />` and `<page />`. When you import `pagequery.js` into your webpage, those elements will be loaded automatically as dynamic page containers, and you can manipulate them easily with pageQuery functions.
+# Flexagon
+Flexagon is a lightweight Javascript library aimed to help create dynamic containers with custom HTML tags `<binder />` and `<page />`. When you import `flexagon.js` into your webpage, those elements will be loaded automatically as dynamic page containers, and you can manipulate them easily with Flexagon's functions.
 
-### [➜ Webpage created with pageQuery](https://jagorak.github.io/pagequery)
-### [➜ Video example of pageQuery](https://www.youtube.com/watch?v=WKCQJrdRDPM)
-### [➜ Documentation](https://github.com/Jagorak/pageQuery/blob/main/documentation.md)
+### [➜ Webpage created with Flexagon](https://jagorak.github.io/flexagon)
+### [➜ Video example of Flexagon](https://www.youtube.com/watch?v=WKCQJrdRDPM)
+### [➜ Documentation](https://github.com/Jagorak/flexagon/blob/main/documentation.md)
 
 ## Getting Started
 
-### 1. Download pageQuery
-Download pageQuery by using either `pagequery.js` file above (that is the most up-to-date version).
+### 1. Download Flexagon
+Download Flexagon by using either `flexagon.js` file above (that is the most up-to-date version).
 
-### 2. Import pageQuery into your file
-Import `pagequery.js` with the following tag:
+### 2. Import Flexagon into your file
+Import `flexagon.js` with the following tag:
 ```HTML
-<script type="text/javascript" src="pagequery.js"></script>
+<script type="text/javascript" src="flexagon.js"></script>
 ```
 
-### 3. Create a basic page with pageQuery
+### 3. Create a basic page with Flexagon
 Put the following HTML within your `<body />` tag:
 ```HTML
 <binder x="50%" y="50%">
@@ -43,7 +43,7 @@ Put the following HTML within your `<body />` tag:
 ```
 And then you should have a fully functioning binder, a dynamic page container which you can manipulate with Javascript.
 
-### 4. Add some functionality to pageQuery
+### 4. Add some functionality to your page
 - Finally, you can add some simple functionality to the binder. Anywhere within your `<binder />` tag, put the following code:
 ```HTML
 <button onmousedown="dragBinder()">Drag Binder</button>
@@ -51,9 +51,9 @@ And then you should have a fully functioning binder, a dynamic page container wh
 You can now click and hold this button to move the binder around the screen.
 
 ## TODO List:
-A list of development tasks for pageQuery
+A list of development tasks for Flexagon
 
 - [x] __1.__ Load `<span />` tags in place of binder and page tags to improve compatiblity.
-- [ ] __2.__ Experiment with [HTMLCustomElement](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to improve the efficiency of pageQuery
+- [ ] __2.__ Experiment with [HTMLCustomElement](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to improve the efficiency of flexagon
 - [x] __3.__ Create functions `cloneBinder()`, `deleteBinder()`
-- [x] __4.__ Try to transfer event listeners (`onclick=""` etc.)from binder tags to their respective span tags
+- [x] __4.__ Transfer event listeners (`onclick=""` etc.) from binder tags to their respective span tags
