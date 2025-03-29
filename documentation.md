@@ -248,7 +248,7 @@ let myBinder = getBinder("random-binder");
 > 
 > __binderID:__ string, number or Object (optional)
 
-Clones the specified binder and returns the object instance of the cloned binder.
+Clones the specified binder, all of its pages, and returns the object instance of the cloned binder.
 
 If __binderID__ isn't specified, then the function will be carried out on the parent binder (if there is one).
 </details>
