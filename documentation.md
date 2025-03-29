@@ -11,6 +11,13 @@ pageQuery works by using a bespoke element called the binder element:
 ```
 All binder elements must contain at least one `<page />` element.
 
+<hr />
+
+You can include event listeners in binder elements:
+```HTML
+<binder onclick="openPage('binderclickers')"></binder>
+```
+
 ### Attributes:
 - __`id=""`__
 
