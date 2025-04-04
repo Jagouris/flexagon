@@ -58,3 +58,5 @@ A list of development tasks for Flexagon
 - [ ] __2.__ Experiment with [HTMLCustomElement](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to improve the efficiency of flexagon
 - [x] __3.__ Create functions `cloneBinder()`, `deleteBinder()`
 - [x] __4.__ Transfer event listeners (`onclick=""` etc.) from binder tags to their respective span tags
+- [ ] __5.__ Add and remove pages.
+- [ ] __6.__ Resize functionality.
