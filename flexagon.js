@@ -302,7 +302,11 @@
                x = (window.innerWidth*x/100)-(this.dim.width*x/100);
 
                this.node.style.left = x.toString() + "px";
-            }else if(PX_RE.test(x)) this.node.style.left = x;
+            }else if(PX_RE.test(x)){
+                this.node.style.left = x;
+            }else{
+                this.node.style.left = x + "px";
+            }
          }
       };
 
@@ -315,7 +319,11 @@
                y = (window.innerHeight*y/100)-(this.dim.height*y/100);
 
                this.node.style.top = y.toString() + "px";
-            }else if(PX_RE.test(y)) this.node.style.top = y;
+            }else if(PX_RE.test(y)){
+                this.node.style.top = y;
+            }else{
+                this.node.style.left = y + "px";
+            }
          }
       };
 
@@ -327,7 +335,11 @@
                width = window.innerWidth*parseInt(width)/100;
 
                this.node.style.width = width.toString() + "px";
-            }else if(PX_RE.test(width)) this.node.style.width = width;
+            }else if(PX_RE.test(width)){
+                this.node.style.width = width;
+            }else{
+                this.node.style.width = width + "px";
+            }
          }
 
          if(typeof height === "number"){
@@ -337,7 +349,11 @@
                height = window.innerHeight*parseInt(height)/100;
                
                this.node.style.height = height.toString() + "px";
-            }else if(PX_RE.test(height)) this.node.style.height = height;
+            }else if(PX_RE.test(height)){
+                this.node.style.height = height;
+            }else{
+                this.node.style.height = height + "px";
+            }
          }
       };
 
