@@ -3,7 +3,7 @@
 # HTML
 
 <details>
-<summary><h2>&lt;binder /&gt</h2></summary>
+<summary><h3>&lt;binder /&gt</h3></summary>
   
 Flexagon works with an element called the `<binder />` element:
   
@@ -24,9 +24,8 @@ You can include all normal HTML attributes in a binder element (such as __id__, 
 For now, CSS attribute `right` and `bottom` will not work in Flexagon. Instead you can use `left: 100%` or `top: 100%` and it works the same
 
 </details>
-
 <details>
-<summary><h2>&lt;page /&gt</h2></summary>
+<summary><h3>&lt;page /&gt</h3></summary>
   
 Every binder contains at least one page element:
 ```HTML
@@ -82,7 +81,7 @@ You can include more than one function inside an HTML element, like this:
 ```
 
 <details>
-<summary><h2>translateBinder(x, y, binderID);</h2></summary>
+<summary><h3>translateBinder(x, y, binderID);</h3></summary>
 
 > __x:__ string or number (optional)
 > 
@@ -101,7 +100,7 @@ translateBinder(null, '50%'); //This will change the y position to 50%, but the 
 </details>
 
 <details>
-<summary><h2>scaleBinder(width, height, binderID);</h2></summary>
+<summary><h3>scaleBinder(width, height, binderID);</h3></summary>
 
 > __width:__ string or number (optional)
 > 
@@ -120,7 +119,7 @@ scaleBinder(null, '50%'); //This will change the height to 50%, but the width wi
 </details>
 
 <details>
-<summary><h2>userTranslate(binderID);</h2></summary>
+<summary><h3>userTranslate(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -137,7 +136,7 @@ Drag a binder around the screen based on the cursor position.
 </details>
 
 <details>
-<summary><h2>userScale(direction, binderID);</h2></summary>
+<summary><h3>userScale(direction, binderID);</h3></summary>
 
 > __direction:__ string, enum (left, right, up, or down)
 >
@@ -157,7 +156,7 @@ It's worth knowing that you can use `min-width` and `min-height` CSS style if yo
 </details>
 
 <details>
-<summary><h2>openPage(pageID, binderID);</h2></summary>
+<summary><h3>openPage(pageID, binderID);</h3></summary>
 
 > __pageID:__ string or number
 >
@@ -181,7 +180,7 @@ Example which opens the "cat" page in the "animals" binder:
 </details>
 
 <details>
-<summary><h2>prevPage(binderID);</h2></summary>
+<summary><h3>prevPage(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -190,7 +189,7 @@ Opens the previous page index (the page that was loaded before the current page)
 </details>
 
 <details>
-<summary><h2>nextPage(binderID);</h2></summary>
+<summary><h3>nextPage(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -199,7 +198,7 @@ Opens the next page index (the page that was loaded after the current page);
 </details>
 
 <details>
-<summary><h2>getCurrentPage(binderID);</h2></summary>
+<summary><h3>getCurrentPage(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -208,7 +207,7 @@ Returns the index of the page which is currently displayed in the binder.
 </details>
 
 <details>
-<summary><h2>openBinder(binderID);</h2></summary>
+<summary><h3>openBinder(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object
 
@@ -217,7 +216,7 @@ Opens the specified binder.
 </details>
 
 <details>
-<summary><h2>closeBinder(binderID);</h2></summary>
+<summary><h3>closeBinder(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -226,7 +225,7 @@ Closes the specified binder.
 </details>
 
 <details>
-<summary><h2>bringToFront(binderID);</h2></summary>
+<summary><h3>bringToFront(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -235,7 +234,7 @@ Display the binder above all other binders.
 </details>
 
 <details>
-<summary><h2>getBinder(binderID);</h2></summary>
+<summary><h3>getBinder(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object
 
@@ -251,7 +250,7 @@ let myBinder = getBinder("random-binder");
 </details>
 
 <details>
-<summary><h2>cloneBinder(binderName, binderID);</h2></summary>
+<summary><h3>cloneBinder(binderName, binderID);</h3></summary>
 
 > __binderName:__ string (optional)
 > 
@@ -271,7 +270,7 @@ console.log(getBinderIndex(newBinder));
 </details>
 
 <details>
-<summary><h2>deleteBinder(binderID);</h2></summary>
+<summary><h3>deleteBinder(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -281,7 +280,7 @@ Deletes the specified binder.
 
 
 <details>
-<summary><h2>getBinderIndex(binderID);</h2></summary>
+<summary><h3>getBinderIndex(binderID);</h3></summary>
 
 > __binderID:__ string, number or Object (optional)
 
@@ -290,7 +289,7 @@ Returns the index of the specified binder.
 </details>
 
 <details>
-<summary><h2>findParentBinder(srcElement);</h2></summary>
+<summary><h3>findParentBinder(srcElement);</h3></summary>
 
 > __srcElement:__ Object (optional)
 
