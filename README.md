@@ -25,7 +25,7 @@ Use the following tag anywhere in the `<head />` section of your document:
 ### 3. Create a binder element
 A binder is defined like any other HTML element, except it must have at least one page element inside it. Put the following HTML within your `<body />` tag:
 ```HTML
-<binder x="50%" y="50%">
+<binder>
    <page>
       <p>This is intro page.</p>
       <a onclick="openPage('example-page')">Click here to open "example-page!"</a>
@@ -46,6 +46,7 @@ You can give a simple design to your binder in the normal way CSS:
       padding: 10px;
       border: 1px solid #000;
       font-family: sans-serif;
+      left: 50%;
    }
 </style>
 ```
