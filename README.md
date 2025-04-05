@@ -60,13 +60,3 @@ This button will let you click and drag the binder around the screen.
 
 ### 6. View the documentation
 The above is the most basic demonstration of Flexagon, you can view the [documentation](https://github.com/Jagorak/flexagon/blob/main/documentation.md) if you want to learn more.
-
-## TODO List:
-A list of development tasks for Flexagon
-
-- [x] __1.__ Load `<span />` tags in place of binder and page tags to improve compatiblity.
-- [ ] __2.__ Experiment with [HTMLCustomElement](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements) to improve the efficiency of flexagon
-- [x] __3.__ Create functions `cloneBinder()`, `deleteBinder()`
-- [x] __4.__ Transfer event listeners (`onclick=""` etc.) from binder tags to their respective span tags
-- [ ] __5.__ Add and remove pages.
-- [ ] __6.__ Resize functionality.
