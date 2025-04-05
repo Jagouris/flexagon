@@ -139,18 +139,18 @@ Drag a binder around the screen based on the cursor position.
 <details>
 <summary><h2>userScale(direction, binderID);</h2></summary>
 
-> __direction:__ string
+> __direction:__ string, enum (left, right, up, or down)
 >
 > __binderID:__ string, number or Object (optional)
 
-Scale a binder in the specified direction ("left", "right", "up", or "down") based on the cursor position.
+Scale a binder in the specified direction based on the cursor position.
 
 <hr />
 
 `userScale()` should be used in an `onmousedown` event, like the following example:
 
 ```HTML
-<button onmousedown="userScale('right');">Scale Right</button>
+<button onmousedown="userScale(right);">Scale Right</button>
 ```
 It's worth knowing that you can use `min-width` and `min-height` CSS style if you want your Binder to have a resize limit.
 
