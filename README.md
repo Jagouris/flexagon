@@ -1,6 +1,6 @@
 
 # <img src="logo2.png" width="60" height="60" /> Flexagon
-## What is Flexagon?
+
 Flexagon is a Javascript library, it is an easy and efficient way create dynamic webpages with custom HTML elements. The option is also available to expand Flexagon functionality if you choose to.
 
 When you import `flexagon.js` into your webpage, it will run automatically, and then you can manipulate it easily with Flexagon's functions.
