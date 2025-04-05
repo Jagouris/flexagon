@@ -55,7 +55,7 @@ Afterwards, you should have a fully functioning example of Flexagon, a dynamic p
 ### 5. Add more functionality
 Put the following button anywhere inside your `<binder />` tag:
 ```HTML
-<button onmousedown="dragBinder()">Drag Binder</button>
+<button onmousedown="userTranslate()">Drag Binder</button>
 ```
 This button will let you click and drag the binder around the screen.
 
