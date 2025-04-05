@@ -23,7 +23,7 @@
    const PQ_RE = new RegExp("%");
    const PX_RE = new RegExp("px");
    const FN_RE = new RegExp("\(.*?\)");
-
+   
    const left = "left";
    const right = "right";
    const up = "up";
@@ -80,25 +80,25 @@
                activeBinder.width -= dX;
                activeBinder.x += dX;
             }
-			
-			if(resizing.right) activeBinder.width += dX;
+         
+         if(resizing.right) activeBinder.width += dX;
             
-			if(resizing.up){
+         if(resizing.up){
                activeBinder.height -= dY;
                activeBinder.y += dY;
             }
-			
-			if(resizing.down) activeBinder.height += dY;
-			
+         
+         if(resizing.down) activeBinder.height += dY;
+         
             if(activeBinder.width - activeBinder.min_width > 0){
-				activeBinder.translateX(activeBinder.x);
-				activeBinder.scaleX(activeBinder.width);
-			}
-			
-			if(activeBinder.height - activeBinder.min_height > 0){
-				activeBinder.translateY(activeBinder.y);
-				activeBinder.scaleY(activeBinder.height);
-			}
+            activeBinder.translateX(activeBinder.x);
+            activeBinder.scaleX(activeBinder.width);
+         }
+         
+         if(activeBinder.height - activeBinder.min_height > 0){
+            activeBinder.translateY(activeBinder.y);
+            activeBinder.scaleY(activeBinder.height);
+         }
          }
       }, false);
    }
@@ -463,7 +463,7 @@
       for(let rule of oldStyle)
          if(oldStyle[rule] != newStyle[rule])
             newNode.style[rule] = oldStyle[rule];
-   }
+   }   
    
    function loadBinder(node){
       let binderName = node.id;
