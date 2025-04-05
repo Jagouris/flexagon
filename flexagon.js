@@ -24,6 +24,11 @@
    const PX_RE = new RegExp("px");
    const FN_RE = new RegExp("\(.*?\)");
 
+   const left = "left";
+   const right = "right";
+   const up = "up";
+   const down = "down";
+
    window.onload = function(){
       init();
    };
