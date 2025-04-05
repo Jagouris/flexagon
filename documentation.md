@@ -16,7 +16,7 @@ All binder elements contain at least one `<page />` element. Binders can contain
 
 You can include all normal HTML attributes in a binder element (such as __id__, __style__, __onclick__ etc.):
 ```HTML
-<binder style="background: #00ff00" onclick="bringToFront()"></binder> <!-- this puts the binder in front of all other binders -->
+<binder style="background: #00ff00" onclick="bringToFront()"></binder>
 ```
 Specify a unique __id__ for a binder to make it easier to refer to that binder (for instance, when using the `openBinder()` function).
 
