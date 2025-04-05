@@ -1,6 +1,9 @@
 
 # <img src="logo2.png" width="60" height="60" /> Flexagon
-Flexagon is a lightweight Javascript library made to help create dynamic webpages with custom HTML tags `<binder />` and `<page />`. When you import `flexagon.js` into your webpage, those elements will be loaded automatically as dynamic elements, which you can manipulate easily with Flexagon's functions. The content is converted to into natural HTML when a webpage is loaded.
+## What is Flexagon?
+Flexagon is a Javascript library, it is an easy and efficient way create dynamic webpages with custom HTML elements. The option is also available to expand Flexagon functionality if you choose to.
+
+When you import `flexagon.js` into your webpage, it will run automatically, and then you can manipulate it easily with Flexagon's functions.
 
 ### [➜ Webpage created with Flexagon](https://jagorak.github.io/Flexagon)
 ### [➜ Video example of Flexagon](https://www.youtube.com/watch?v=WKCQJrdRDPM)
@@ -8,17 +11,19 @@ Flexagon is a lightweight Javascript library made to help create dynamic webpage
 
 ## Getting Started
 
-### 1. Download Flexagon
-Download Flexagon by using either `flexagon.js` file above (that is the most up-to-date version).
+If you want to try Flexagon, it's easy to get started. You can follow the steps to make a functioning webpage with Flexagon (5 minutes).
 
-### 2. Import Flexagon into your file
-Import `flexagon.js` with the following tag:
+### 1. Download Flexagon
+Put the `flexagon.js` into your folder alongside your HTML file. (The version above is the most up-to-date).
+
+### 2. Put Flexagon into your file
+Use the following tag anywhere in the `<head />` section of your document:
 ```HTML
 <script type="text/javascript" src="flexagon.js"></script>
 ```
 
-### 3. Create a basic page with Flexagon
-Put the following HTML within your `<body />` tag:
+### 3. Create a binder element
+A binder is defined like any other HTML element, except it must have at least one page element inside it. Put the following HTML within your `<body />` tag:
 ```HTML
 <binder x="50%" y="50%">
    <page>
@@ -31,7 +36,9 @@ Put the following HTML within your `<body />` tag:
    </page>
 </binder>
 ```
-- Then, give a simple design to your binder with CSS:
+
+### 4. Style it
+You can give a simple design to your binder in the normal way CSS:
 ```HTML
 <style>
    binder {
@@ -42,14 +49,17 @@ Put the following HTML within your `<body />` tag:
    }
 </style>
 ```
-And then you should have a fully functioning binder, a dynamic page container which you can manipulate with Javascript.
+Afterwards, you should have a fully functioning example of Flexagon, a dynamic page container which you can manipulate with Javascript.
 
-### 4. Add some functionality to your page
-- Finally, you can add some simple functionality to the binder. Anywhere within your `<binder />` tag, put the following code:
+### 5. Add more functionality
+Put the following button anywhere inside your `<binder />` tag:
 ```HTML
 <button onmousedown="dragBinder()">Drag Binder</button>
 ```
-You can now click and hold this button to move the binder around the screen.
+This button will let you click and drag the binder around the screen.
+
+### 6. View the documentation
+The above is the most basic demonstration of Flexagon, you can view the [documentation](https://github.com/Jagorak/flexagon/blob/main/documentation.md) if you want to learn more.
 
 ## TODO List:
 A list of development tasks for Flexagon
