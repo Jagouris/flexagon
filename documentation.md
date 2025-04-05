@@ -12,13 +12,16 @@ Flexagon works with an element called the `<binder />` element:
 ```
 All binder elements contain at least one `<page />` element. Binders can contain any HTML code.
 
+Specify a unique __id__ for a binder to make it easier to refer to that binder (for instance, when using the `openBinder()` function).
+
 <hr />
 
 You can include all normal HTML attributes in a binder element (such as __id__, __style__, __onclick__ etc.):
 ```HTML
 <binder style="background: #00ff00" onclick="bringToFront()"></binder>
 ```
-Specify a unique __id__ for a binder to make it easier to refer to that binder (for instance, when using the `openBinder()` function).
+
+For now, CSS attribute `right` and `bottom` will not work in Flexagon. Instead you can use `left: 100%` or `top: 100%` and it works the same
 
 </details>
 
@@ -147,8 +150,9 @@ Scale a binder in the specified direction ("left", "right", "up", or "down") bas
 `userScale()` should be used in an `onmousedown` event, like the following example:
 
 ```HTML
-<button onmousedown="userScale('right');" style="right: 0; position: absolute;">Scale Right</button>
+<button onmousedown="userScale('right');">Scale Right</button>
 ```
+It's worth knowing that you can use `min-width` and `min-height` CSS style if you want your Binder to have a resize limit.
 
 </details>
 
