@@ -21,6 +21,8 @@ You can include all normal HTML attributes in a binder element (such as __id__, 
 <binder style="background: #00ff00" onclick="bringToFront()"></binder>
 ```
 
+It is expected for you to use CSS atributes `top` and `left` to position a binder.
+
 </details>
 <details>
 <summary><h3>&lt;page /&gt</h3></summary>
