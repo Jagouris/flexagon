@@ -21,8 +21,6 @@ You can include all normal HTML attributes in a binder element (such as __id__, 
 <binder style="background: #00ff00" onclick="bringToFront()"></binder>
 ```
 
-For now, CSS attribute `right` and `bottom` will not work in Flexagon. Instead you can use `left: 100%` or `top: 100%` and it works the same
-
 </details>
 <details>
 <summary><h3>&lt;page /&gt</h3></summary>
@@ -138,18 +136,18 @@ Drag a binder around the screen based on the cursor position.
 <details>
 <summary><h3>userScale(direction, binderID);</h3></summary>
 
-> __direction:__ string, enum (left, right, up, or down)
+> __direction:__ string
 >
 > __binderID:__ string, number or Object (optional)
 
-Scale a binder in the specified direction based on the cursor position.
+Scale a binder in the specified direction based on the cursor position ("left", "right", "up", or "down").
 
 <hr />
 
 `userScale()` should be used in an `onmousedown` event, like the following example:
 
 ```HTML
-<button onmousedown="userScale(right);">Scale Right</button>
+<button onmousedown="userScale('right');">Scale Right</button>
 ```
 It's worth knowing that you can use `min-width` and `min-height` CSS style if you want your Binder to have a resize limit.
 
