@@ -5,9 +5,9 @@ Flexagon is a Javascript library, it is an easy and efficient way create dynamic
 
 When you import `flexagon.js` into your webpage, it will run automatically, and then you can manipulate it easily with Flexagon's functions.
 
-### [➜ Webpage created with Flexagon](https://jagorak.github.io/Flexagon)
+### [➜ Webpage created with Flexagon](https://jagouris.github.io/Flexagon)
 ### [➜ Video example of Flexagon](https://www.youtube.com/watch?v=WKCQJrdRDPM)
-### [➜ Documentation](https://github.com/Jagorak/flexagon/blob/main/documentation.md)
+### [➜ Documentation](https://github.com/Jagouris/flexagon/blob/main/documentation.md)
 
 ## Getting Started
 
