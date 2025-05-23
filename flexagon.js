@@ -1,9 +1,6 @@
-//Flexagon v1.4.0 copyright (c) Jagorak (https://github.com/Jagorak/)
+//Flexagon v1.4.0 copyright (c) Jagouris (https://github.com/Jagouris/)
 
 (function(){
-   let mousePos = {x: 0, y: 0};
-   let prevMousePos = {x: 0, y: 0};
-
    let binderList = [];
    let binderNames = [];
    let activeBinder;
@@ -11,23 +8,13 @@
    let zIndex = [];
  
    let dragging = false;
-   let resizing = {
+   let resizing = false;
+   let scaleDirection = {
       left: false,
       right: false,
       up: false,
       down: false
    };
-   
-   const ID_RE = new RegExp(" ");
-   const PG_RE = new RegExp("page ");
-   const PQ_RE = new RegExp("%");
-   const PX_RE = new RegExp("px");
-   const FN_RE = new RegExp("\(.*?\)");
-   
-   const left = "left";
-   const right = "right";
-   const up = "up";
-   const down = "down";
 
    window.onload = function(){
       init();
@@ -46,59 +33,45 @@
          if(activeBinder) activeBinder.makeInactive();
          
          dragging = false;
-         
-         resizing.left = false;
-         resizing.right = false;
-         resizing.up = false;
-         resizing.down = false;
+         resizing = false;
+          
+         for(let i in scaleDirection)
+            scaleDirection[i] = false;
       }, false);
       
       document.addEventListener('mousemove', function(e){
-         prevMousePos = {
-            x: mousePos.x,
-            y: mousePos.y
-         };
-
-         mousePos = {
-            x: e.clientX,
-            y: e.clientY
-         };
-
          if(activeBinder){
-            var dX = mousePos.x - prevMousePos.x;
-            var dY = mousePos.y - prevMousePos.y;
-            
             if(dragging){
-               activeBinder.x += dX;
+               activeBinder.x += e.movementX;
                activeBinder.translateX(activeBinder.x);
                
-               activeBinder.y += dY;
+               activeBinder.y += e.movementY;
                activeBinder.translateY(activeBinder.y);
             }
             
-            if(resizing.left){
-               activeBinder.width -= dX;
-               activeBinder.x += dX;
+            if(scaleDirection.left){
+               activeBinder.width -= e.movementX;
+               activeBinder.x += e.movementX;
             }
          
-         if(resizing.right) activeBinder.width += dX;
+            if(scaleDirection.right) activeBinder.width += e.movementX;
             
-         if(resizing.up){
-               activeBinder.height -= dY;
-               activeBinder.y += dY;
+            if(scaleDirection.up){
+               activeBinder.height -= e.movementY;
+               activeBinder.y += e.movementY;
             }
          
-         if(resizing.down) activeBinder.height += dY;
+            if(scaleDirection.down) activeBinder.height += e.movementY;
          
             if(activeBinder.width - activeBinder.min_width > 0){
-            activeBinder.translateX(activeBinder.x);
-            activeBinder.scaleX(activeBinder.width);
-         }
+               activeBinder.translateX(activeBinder.x);
+               activeBinder.scaleX(activeBinder.width);
+            }
          
-         if(activeBinder.height - activeBinder.min_height > 0){
-            activeBinder.translateY(activeBinder.y);
-            activeBinder.scaleY(activeBinder.height);
-         }
+            if(activeBinder.height - activeBinder.min_height > 0){
+               activeBinder.translateY(activeBinder.y);
+               activeBinder.scaleY(activeBinder.height);
+            }
          }
       }, false);
    }
@@ -198,7 +171,8 @@
 
       binderList[binderID].makeActive();
       
-      resizing[direction] = true;
+      for(let i of direction.split(/, /))
+         scaleDirection[i] = true;
    };
    
    window.scaleBinder = function(width = null, height = null, binderID = null){
@@ -220,7 +194,7 @@
    window.findParentBinder = function(node){
       while(node){
          if(node.tagName == "DIV"){
-            let id = node.id.split(ID_RE);
+            let id = node.id.split(/ /);
 
             if(id[0] == "binder") return getBinderIndex(id[1]);
          }
@@ -260,15 +234,6 @@
    function Binder(node){
       this.node = node;
       
-      this.x = 0;
-      this.y = 0;
-      
-      this.width = 0;
-      this.height = 0;
-      
-      this.min_width = 0;
-      this.min_height = 0;
-      
       this.pageList = [];
       this.pageNames = [];
       this.currentPage = 0;
@@ -293,7 +258,7 @@
             let divNodes = this.node.querySelectorAll("DIV");
 
             for(let node of divNodes)
-               if(PG_RE.test(node.id)) 
+               if(/page /.test(node.id)) 
                   this.loadPage(node);
          }
 
@@ -311,7 +276,7 @@
       
       this.loadPage = function(node){
          let id = node.id;
-         id = id.replace(PG_RE, "");
+         id = id.replace(/page /, "");
          
          let pageIndex = this.pageList.push(node) - 1;
          
@@ -370,12 +335,12 @@
          if(typeof x === "number"){
             this.node.style.left = x.toString() + "px";
          }else{
-            if(PQ_RE.test(x)){
+            if(/%/.test(x)){
                x = parseInt(x);
                x = (window.innerWidth * x / 100) - (this.width * x / 100);
 
                this.node.style.left = x.toString() + "px";
-            }else if(PX_RE.test(x)){
+            }else if(/px/.test(x)){
                 this.node.style.left = x;
             }else{
                 this.node.style.left = x + "px";
@@ -387,12 +352,12 @@
          if(typeof y === "number"){
             this.node.style.top = y.toString() + "px";
          }else{
-            if(PQ_RE.test(y)){
+            if(/%/.test(y)){
                y = parseInt(y);
                y = (window.innerHeight * y / 100) - (this.height * y / 100);
 
                this.node.style.top = y.toString() + "px";
-            }else if(PX_RE.test(y)){
+            }else if(/px/.test(y)){
                 this.node.style.top = y;
             }else{
                 this.node.style.left = y + "px";
@@ -404,11 +369,11 @@
          if(typeof width === "number"){
             this.node.style.width = width.toString() + "px";
          }else{
-            if(PQ_RE.test(width)){
+            if(/%/.test(width)){
                width = window.innerWidth * parseInt(width) / 100;
 
                this.node.style.width = width.toString() + "px";
-            }else if(PX_RE.test(width)){
+            }else if(/px/.test(width)){
                 this.node.style.width = width;
             }else{
                 this.node.style.width = width + "px";
@@ -420,11 +385,11 @@
          if(typeof height === "number"){
             this.node.style.height = height.toString() + "px";
          }else{
-            if(PQ_RE.test(height)){
+            if(/%/.test(height)){
                height = window.innerHeight * parseInt(height) / 100;
                
                this.node.style.height = height.toString() + "px";
-            }else if(PX_RE.test(height)){
+            }else if(/px/.test(height)){
                 this.node.style.height = height;
             }else{
                 this.node.style.height = height + "px";
@@ -441,7 +406,7 @@
       for(let attribute of oldNode.attributes){
          newNode.attributes[attribute.name] = attribute.value;
          
-         if(FN_RE.test(attribute.value)) newNode.setAttribute(attribute.name, attribute.value);
+         if(/\(.*?\)/.test(attribute.value)) newNode.setAttribute(attribute.name, attribute.value);
       }
 
       for(let child of oldNode.children) newNode.appendChild(child.cloneNode(true));
